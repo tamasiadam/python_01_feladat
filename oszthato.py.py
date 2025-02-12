@@ -11,4 +11,3 @@ def oszthato(szamok):
     return atlag
 
 print(oszthato(ezekaszamok))
-
