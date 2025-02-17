@@ -29,11 +29,39 @@ with open('./03_feladat/konyvek.txt', 'r', encoding='utf-8') as forrasfajl:
         konyvek.append([nev, szul_ev, hal_ev, nemzetiseg, cim, helyezes])
     
 #print(f'{konyvek=}')
-print(f"3.2. feladat: Az állományban {len(konyvek)} db könyv adatai szerepelnek.")
-legjobbhu = None
-for konyv in konyvek:
-    if konyv[3] == 'magyar':
-        if legjobbhu is None or konyv[5] < legjobbhu[5]:
-            legjobbhu =  konyv
+def konyvszam():
+    print(f"3.2. feladat: Az állományban {len(konyvek)} db könyv adatai szerepelnek.")
 
-print(f"3.3 feladat: A legjobb helyezést elért magyar könyv: {legjobbhu[0]}: {legjobbhu[4]}")
+def legjobbmagyar():
+    legjobbhu = None
+    for konyv in konyvek:
+        if konyv[3] == 'magyar':
+            if legjobbhu is None or konyv[5] < legjobbhu[5]:
+                legjobbhu =  konyv
+
+    print(f"3.3 feladat: A legjobb helyezést elért magyar könyv: {legjobbhu[0]}: {legjobbhu[4]}")
+
+def nemetiro():
+    nemetiro = False
+    for konyv in konyvek:
+        if konyv[3] == 'német':
+            nemetiro = True
+    
+    if nemetiro == True:
+        print("3.4 feladat: A listában szerepel német író könyve.")
+    else:
+        print("3.4 feladat: A listában NEM szerepel német író könyve.")
+
+def oregek():
+    old = []
+    eletkor = int(konyv[1]) - int(konyv[2])
+    for konyv in konyvek:  
+        if eletkor > 90:
+            old.append(konyv[0])
+    print(f"Ők 90-nél öregebbek: {old}")
+
+
+konyvszam()
+legjobbmagyar()
+nemetiro()
+oregek()
